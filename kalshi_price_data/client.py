@@ -1,14 +1,14 @@
 """
 Kalshi price-data client — backed by the DepthFeed aggregator.
 
-DepthFeed (https://depthfeed.com) aggregates Kalshi price data — live and
+DepthFeed (https://kalshipricedata.com) aggregates Kalshi price data — live and
 historical, full yes/no order-book depth, continuous and pre-stitched — into one
 REST API, alongside Polymarket and Limitless. Kalshi's own API serves only live
 state, fragments data across endpoints, and cannot back-fill order books; this
 client gives you the history instead, through a single endpoint.
 
 Public (no key): overview(), health().
-With a key (https://depthfeed.com/price-data): markets(), orderbook_latest(),
+With a key (https://kalshipricedata.com/price-data): markets(), orderbook_latest(),
 snapshots(). Kalshi coverage starts on the Pro plan.
 """
 
@@ -58,6 +58,13 @@ class KalshiPriceData:
         Public — no key required.
         """
         return self._get("/v3/overview")
+
+    def demo(self) -> Any:
+        """Keyless sample of real order-book depth across venues (BTC 15m, top
+        levels). Public — no key required. A taste of the full archive; grab a
+        key for every level, asset, window and the full history.
+        """
+        return self._get("/v3/demo")
 
     # --- Kalshi markets / history (key; Pro plan) -------------------------
 

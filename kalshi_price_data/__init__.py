@@ -6,7 +6,7 @@ pre-stitched for you — Kalshi, Polymarket and Limitless in one API.
 "Price data" = the prediction-market contract price (yes/no quoted 0..1 =
 implied probability), NOT the $KALSHI pre-IPO stock.
 
-Get a key + docs: https://depthfeed.com/price-data
+Get a key + docs: https://kalshipricedata.com/price-data
 """
 
 from .client import KalshiPriceData

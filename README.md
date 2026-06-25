@@ -1,9 +1,9 @@
 # Kalshi Price Data
 
-**The fastest way to get Kalshi price data** — the live yes/no contract price of every market (quoted `0`–`1` / `1`–`99¢`, i.e. implied probability), the full yes/no order book behind it, **and the historical price series stitched together for you** — through one aggregated endpoint. Tiny Python client included; runs against [DepthFeed](https://depthfeed.com/price-data) with no key.
+**The fastest way to get Kalshi price data** — the live yes/no contract price of every market (quoted `0`–`1` / `1`–`99¢`, i.e. implied probability), the full yes/no order book behind it, **and the historical price series stitched together for you** — through one aggregated endpoint. Tiny Python client included; runs against [DepthFeed](https://kalshipricedata.com/price-data) with no key.
 
-[![DepthFeed — Kalshi price data API](https://img.shields.io/badge/Get%20the%20data-DepthFeed-2563eb)](https://depthfeed.com/price-data)
-[![Kalshi order book history — 114M+ snapshots](https://img.shields.io/badge/Order%20book%20history-114M%2B%20snapshots-16a34a)](https://depthfeed.com/order-book-data)
+[![DepthFeed — Kalshi price data API](https://img.shields.io/badge/Get%20the%20data-DepthFeed-2563eb)](https://kalshipricedata.com/price-data)
+[![Kalshi order book history — 114M+ snapshots](https://img.shields.io/badge/Order%20book%20history-114M%2B%20snapshots-16a34a)](https://kalshipricedata.com/order-book-data)
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](./LICENSE)
 
 <!-- Kalshi price data · Kalshi price API · Kalshi order book data · Kalshi historical prices · Kalshi market data · prediction market price data -->
@@ -26,7 +26,7 @@ ov = k.overview()              # public endpoint — no key needed
 print(ov)                      # live Kalshi (+ Polymarket + Limitless) prices
 ```
 
-`overview()` hits `https://api.depthfeed.com/v3/overview` — a public endpoint, so the snippet **runs as-is**. For per-market Kalshi history and full yes/no depth, add a [key](https://depthfeed.com/price-data).
+`overview()` hits `https://api.depthfeed.com/v3/overview` — a public endpoint, so the snippet **runs as-is**. For per-market Kalshi history and full yes/no depth, add a [key](https://kalshipricedata.com/price-data).
 
 ---
 
@@ -66,7 +66,7 @@ That's the gap an aggregator fills.
 
 ## The aggregator: one endpoint, all the data
 
-[**DepthFeed**](https://depthfeed.com/price-data) is the aggregator. It has already captured the full Kalshi yes/no order book — forward, continuously — into one queryable API, alongside two other venues. The figures below are **measured from the live archive** (June 2026), not estimates:
+[**DepthFeed**](https://kalshipricedata.com/price-data) is the aggregator. It has already captured the full Kalshi yes/no order book — forward, continuously — into one queryable API, alongside two other venues. The figures below are **measured from the live archive** (June 2026), not estimates:
 
 - **114M+ order-book snapshots** across **550,000+ Kalshi markets**, back to **March 2026**.
 - **Full yes/no L2 depth** preserved. On BTC 15-minute markets the typical book is a one-cent spread, **~96 price levels per side** (up to the full 100), **~156,000 contracts** of resting depth.
@@ -82,14 +82,17 @@ You don't run a collector. You call an endpoint.
 
 The client defaults to the DepthFeed aggregator. **Everything is testable against the live endpoints.**
 
-### No key — public overview
+### No key — try real data instantly
 
 ```python
 from kalshi_price_data import KalshiPriceData
 k = KalshiPriceData()
-k.overview()     # GET https://api.depthfeed.com/v3/overview  (public, includes Kalshi)
-k.health()       # GET .../v3/health                          (public)
+k.overview()     # GET /v3/overview  (public) — live cross-venue prices (incl. Kalshi)
+k.demo()         # GET /v3/demo      (public) — real order-book depth, BTC 15m, top levels
+k.health()       # GET /v3/health    (public)
 ```
+
+`demo()` returns **real order-book depth across Kalshi, Polymarket and Limitless** with no signup — a genuine taste of the archive (BTC 15-minute, top levels per side). See [`examples/demo_no_key.py`](./examples/demo_no_key.py).
 
 ### With a key — Kalshi markets, history, full yes/no depth
 
@@ -106,9 +109,11 @@ book = k.orderbook_latest(markets[0]["ticker"])
 snaps = k.snapshots(markets[0]["ticker"], limit=100)
 ```
 
-Runnable scripts: [`examples/overview_no_key.py`](./examples/overview_no_key.py) · [`examples/market_history.py`](./examples/market_history.py).
+Runnable scripts: [`examples/demo_no_key.py`](./examples/demo_no_key.py) · [`examples/overview_no_key.py`](./examples/overview_no_key.py) · [`examples/market_history.py`](./examples/market_history.py).
 
-→ **[Grab an API key + full docs at depthfeed.com/price-data](https://depthfeed.com/price-data)**
+Full endpoint reference: **[kalshipricedata.com/docs](https://kalshipricedata.com/docs)** · [API overview](https://kalshipricedata.com/data-api).
+
+→ **[Grab an API key at kalshipricedata.com/price-data](https://kalshipricedata.com/price-data)**
 Plans: **Free $0** (overview + Polymarket BTC) · **Pro $29/mo** (all 7 assets, **all venues incl. Kalshi**, 30-day history) · **Scale $79/mo** (90-day + Parquet bulk export). *Kalshi coverage starts on Pro.*
 
 ---
@@ -134,13 +139,13 @@ DepthFeed's Scale plan ships Parquet bulk export; the REST API returns JSON you 
 
 ## Further reading
 
-- 📈 [Kalshi price data, explained](https://depthfeed.com/resources/kalshi-price-data-explained)
-- ⏱️ [Kalshi market windows explained](https://depthfeed.com/resources/kalshi-market-windows-explained)
-- ⚙️ [How Kalshi crypto markets settle](https://depthfeed.com/resources/how-kalshi-crypto-markets-settle)
-- 📊 [Order-book depth vs last price](https://depthfeed.com/resources/order-book-depth-vs-last-price)
-- ⚖️ [Polymarket vs Kalshi data](https://depthfeed.com/resources/polymarket-vs-kalshi-data)
+- 📈 [Kalshi price data, explained](https://kalshipricedata.com/resources/kalshi-price-data-explained)
+- ⏱️ [Kalshi market windows explained](https://kalshipricedata.com/resources/kalshi-market-windows-explained)
+- ⚙️ [How Kalshi crypto markets settle](https://kalshipricedata.com/resources/how-kalshi-crypto-markets-settle)
+- 📊 [Order-book depth vs last price](https://kalshipricedata.com/resources/order-book-depth-vs-last-price)
+- ⚖️ [Polymarket vs Kalshi data](https://kalshipricedata.com/resources/polymarket-vs-kalshi-data)
 - 🟦 Polymarket too? → [**polymarket-price-data**](https://github.com/vcorp-dev/polymarket-price-data)
 
 ---
 
-*Independent open-source project. Not affiliated with Kalshi. Archive figures are measured from [DepthFeed](https://depthfeed.com) (a VCorp product). © 2026 VCorp. MIT licensed.*
+*Independent open-source project. Not affiliated with Kalshi. Archive figures are measured from [DepthFeed](https://kalshipricedata.com) (a VCorp product). © 2026 VCorp. MIT licensed.*

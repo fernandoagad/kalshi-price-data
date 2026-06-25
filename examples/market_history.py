@@ -1,7 +1,7 @@
 """Historical Kalshi yes/no order book for one ticker.
 
 Needs a DepthFeed key with Kalshi coverage (Pro plan):
-https://depthfeed.com/price-data
+https://kalshipricedata.com/price-data
     export DEPTHFEED_API_KEY=...
 """
 
@@ -13,7 +13,7 @@ from kalshi_price_data import KalshiPriceData
 def main() -> None:
     key = os.environ.get("DEPTHFEED_API_KEY")
     if not key:
-        raise SystemExit("Set DEPTHFEED_API_KEY (https://depthfeed.com/price-data)")
+        raise SystemExit("Set DEPTHFEED_API_KEY (https://kalshipricedata.com/price-data)")
 
     k = KalshiPriceData(api_key=key)
 
