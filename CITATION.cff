@@ -1,0 +1,10 @@
+cff-version: 1.2.0
+message: "If you use this client in research or tooling, please cite it using this metadata."
+title: "DepthFeed Kalshi Price Data Client"
+type: software
+authors:
+  - name: "DepthFeed"
+repository-code: "https://github.com/vcorp-dev/kalshi-price-data"
+url: "https://depthfeed.com/resources/kalshi-api-guide"
+license: MIT
+date-released: 2026-06-25
