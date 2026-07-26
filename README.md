@@ -140,6 +140,7 @@ DepthFeed's Scale plan ships Parquet bulk export; the REST API returns JSON you 
 
 - 🔌 [Official DepthFeed Kalshi API guide](https://depthfeed.com/resources/kalshi-api-guide)
 - 🧪 [Prediction-market trading bot backtesting](https://depthfeed.com/resources/prediction-market-trading-bot-backtesting)
+- 🧪 [Paper trade Kalshi strategies on live displayed books](https://depthfeed.com/kalshi-paper-trading)
 - 📈 [Kalshi price data, explained](https://kalshipricedata.com/resources/kalshi-price-data-explained)
 - ⏱️ [Kalshi market windows explained](https://kalshipricedata.com/resources/kalshi-market-windows-explained)
 - ⚙️ [How Kalshi crypto markets settle](https://kalshipricedata.com/resources/how-kalshi-crypto-markets-settle)
