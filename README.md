@@ -132,7 +132,7 @@ Yes and no contracts quoted `1`–`99¢` (`0`–`1`); the price is the implied p
 Yes — that's the point of an aggregator. One DepthFeed call returns the same market priced across Kalshi, Polymarket and Limitless. See [**polymarket-price-data**](https://github.com/vcorp-dev/polymarket-price-data).
 
 **How do I download Kalshi price data to CSV / Parquet?**
-DepthFeed's Scale plan ships Parquet bulk export; the REST API returns JSON you can write to CSV directly.
+For Parquet delivery, see [bulk data options](https://depthfeed.com/bulk-data). REST responses are JSON you can write to CSV.
 
 ---
 
